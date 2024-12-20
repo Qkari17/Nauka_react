@@ -18,8 +18,9 @@ export const Primary: Story = {
   },
 };
 
-//export const Secondary: Story = {
-  //args: {
-    //children: "Halumi!",
- // },
-//};
+export const Disabled: Story = {
+  args: {
+    label : "Halumi!",
+    disabled:true,
+ },
+};

@@ -7,7 +7,7 @@ function App() {
   return (
     <>
      <Text>hellodawd</Text>
-     <Button label='Click me' onClick={() => alert("Yoo")}></Button>
+     <Button label='Click me' onClick={() => alert("Yoo")} disabled={true}></Button>
     </>
   )
 }
