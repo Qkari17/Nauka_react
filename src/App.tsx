@@ -1,5 +1,5 @@
 import './App.css';
-import { Generator } from './components/Generator/Generator';
+import { Generator,Counter } from './components';
 
 function App() {
 
@@ -7,6 +7,7 @@ function App() {
   return (
     <>
     <Generator></Generator>
+    <Counter></Counter>
     </>
   )
 }
