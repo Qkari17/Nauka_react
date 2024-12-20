@@ -1,13 +1,12 @@
 import './App.css';
+import { Generator } from './components/Generator/Generator';
 
-import {Button, Text,} from './ui';
 function App() {
 
 
   return (
     <>
-     <Text>hellodawd</Text>
-     <Button label='Click me' onClick={() => alert("Yoo")} disabled={true}></Button>
+    <Generator></Generator>
     </>
   )
 }

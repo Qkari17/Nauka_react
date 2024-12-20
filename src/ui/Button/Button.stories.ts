@@ -24,3 +24,17 @@ export const Disabled: Story = {
     disabled:true,
  },
 };
+
+export const Red : Story= {
+  args: {
+    label : "Halumi!",
+    className:'bg-red-600 hover:bg-red-500'
+ },
+};
+
+export const Green : Story= {
+  args: {
+    label : "Halumi!",
+    className:'bg-green-600 hover:bg-green-500'
+ },
+};
