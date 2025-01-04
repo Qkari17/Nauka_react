@@ -1,5 +1,5 @@
 import { FormEventHandler, useRef,} from "react"
-import { Button } from "../../ui"
+import { Button, Input } from "../../ui"
 
 type RegistrationFormData={
     email:string;
@@ -27,18 +27,9 @@ export const RegistrationFormRefs = () =>{
     
     return (
         <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
-                     <div>
-                <label className="mr-2" htmlFor="email">E-mail</label>
-                <input id="email" ref={emailFieldRef} type="email"></input>
-            </div>
-            <div>
-                <label className="mr-2" htmlFor="password">Password</label>
-                <input id="password" ref={passwordFieldRef} type="password"></input>
-            </div>
-            <div>
-                <label className="mr-2" htmlFor="language">Language</label>
-                <input id="language" ref={languageFieldRef} type="text" ></input>
-            </div>
+            <Input label='E-mail' ref={emailFieldRef} type='email' ></Input>
+            <Input label='Password' ref={passwordFieldRef} type='password' ></Input>
+            <Input label='Language' ref={languageFieldRef} ></Input>
             <Button label="Send" type="submit"/>
         </form>
     )
