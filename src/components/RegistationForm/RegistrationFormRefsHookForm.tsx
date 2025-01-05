@@ -1,0 +1,32 @@
+import { useForm,type SubmitHandler } from "react-hook-form";
+import { Button, Input } from "../../ui"
+
+type RegistrationFormData={
+    email:string;
+    password: string;
+    language: string;
+};
+
+export const RegistrationFormRefsHookForm = () =>{
+ 
+    const {register, handleSubmit, formState: {errors} } = useForm<RegistrationFormData>();
+
+    const handleRegistrationForm: SubmitHandler<RegistrationFormData>= (data) => {
+
+        
+        console.log(data);
+    };
+
+
+    
+    return (
+        <form className="flex flex-col gap-2" onSubmit={handleSubmit(handleRegistrationForm)}>
+            <Input label='E-mail' {...register('email', {required: true})} type='email' ></Input>
+            {errors.email && <p className="text-red-500"> Email is required</p>}
+            <Input label='Password' {...register('password', {required:true})} type='password' ></Input>
+            {errors.password && <p className="text-red-500"> Password is required</p>}
+            <Input label='Language' {...register('language')} ></Input>
+            <Button label="Send" type="submit"/>
+        </form>
+    )
+}

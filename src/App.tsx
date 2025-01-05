@@ -1,5 +1,5 @@
 import './App.css';
-import { Generator,Counter, RegistrationFormState, RegistrationFormRefs  } from './components';
+import { Generator,Counter, RegistrationFormState, RegistrationFormRefs, RegistrationFormRefsHookForm  } from './components';
 
 function App() {
 
@@ -9,7 +9,8 @@ function App() {
     <Generator></Generator>
     <Counter></Counter>
     {/* <RegistrationFormState></RegistrationFormState> */}
-    <RegistrationFormRefs></RegistrationFormRefs>
+    {/* <RegistrationFormRefs></RegistrationFormRefs> */}
+    <RegistrationFormRefsHookForm></RegistrationFormRefsHookForm>
     </>
   )
 }
