@@ -1,11 +1,12 @@
 import { useViewPort } from "../../hooks/useViewPort"
+import { Text } from "../../ui";
 
 
 export const ViewPort = () => {
     const size = useViewPort();
 return(
     <div>
-        <p>X:{size.x} , Y:{size.y}</p>
+        <Text>X:{size.x} , Y:{size.y}</Text>
     </div>
 )
 

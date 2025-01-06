@@ -12,7 +12,7 @@ export const Input = forwardRef(
     const id = useId();
     return (
       <div>
-        <label className="mr-2" htmlFor={id}>
+        <label className="mr-2 dark:text-slate-300" htmlFor={id}>
           {label}
         </label>
         <input

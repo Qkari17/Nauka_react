@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Text } from "../../ui";
 
 export const Counter =() =>{
     const [count, setCount] = useState(0);
@@ -12,5 +13,5 @@ export const Counter =() =>{
         }
     }, [])
 
-    return <div>{count}</div>
+    return <Text>{[count]}</Text>
 }
