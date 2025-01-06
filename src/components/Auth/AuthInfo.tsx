@@ -1,6 +1,6 @@
 import { AuthCredentials } from "./AuthCredentials"
 
-export const Authinfo =() =>{
+export const AuthInfo =() =>{
     return(
         <div>
             <AuthCredentials></AuthCredentials>

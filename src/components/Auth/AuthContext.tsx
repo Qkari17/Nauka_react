@@ -1,11 +1,46 @@
-import { createContext } from "react";
+import { createContext, useContext, useState } from "react";
 
-const defaultValues={
-    isLoggedIn: false,
+type AuthContextType = {
+  isLoggedIn: boolean;
+  toggleValue: () => void;
+  logIn: () => void;
+  logOut: () => void;
 };
 
-type AuthContextType = typeof defaultValues;
 
-export const AuthContext = createContext<AuthContextType>(defaultValues);
+export const AuthContext = createContext<AuthContextType | null>(null);
 
-// AuthContext.Provider
+export const useAuthContext = () => {
+    const context = useContext(AuthContext);
+    if (context === null){
+        throw new Error(
+            "Oh no! Component should be placed inside AuntContextProvider"
+        );
+    }
+    return context;
+}
+
+AuthContext.displayName = "AuthContext";
+
+const useAuth = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const toggleValue = () => setIsLoggedIn((value) => !value);
+  const logIn = () => setIsLoggedIn(true);
+  const logOut = () => setIsLoggedIn(false);
+
+  return { isLoggedIn, toggleValue, logIn, logOut };
+};
+
+export const AuthContextProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const { isLoggedIn, toggleValue, logIn, logOut } = useAuth();
+  return (
+    <AuthContext.Provider value={{ isLoggedIn, toggleValue, logIn, logOut }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};

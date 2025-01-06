@@ -7,8 +7,8 @@ import {
   RegistrationFormRefsHookForm,
   ViewPort,
 } from "./components";
-import { AuthContext } from "./components/Auth/AuthContext";
-import { Authinfo } from "./components/Auth/AuthInfo";
+import { AuthContext,AuthContextProvider } from "./components/Auth/AuthContext";
+import { AuthInfo } from "./components/Auth/AuthInfo";
 
 function App() {
   return (
@@ -19,9 +19,9 @@ function App() {
       {/* <RegistrationFormRefs></RegistrationFormRefs> */}
       <RegistrationFormRefsHookForm></RegistrationFormRefsHookForm>
       <ViewPort></ViewPort>
-      <AuthContext.Provider value={{isLoggedIn}}>
-      <Authinfo></Authinfo>
-      </AuthContext.Provider>
+      <AuthContextProvider>
+        <AuthInfo></AuthInfo>
+      </AuthContextProvider>
     </>
   );
 }
