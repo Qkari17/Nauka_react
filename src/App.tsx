@@ -19,6 +19,7 @@ function App() {
   return (
     <>
       <ThemeContextProvider>
+      <ThemeSwitcher></ThemeSwitcher>
         <Generator></Generator>
         <Counter></Counter>
         {/* <RegistrationFormState></RegistrationFormState> */}
@@ -28,8 +29,7 @@ function App() {
         <AuthContextProvider>
           <AuthInfo></AuthInfo>
         </AuthContextProvider>
-        <ThemeSwitcher></ThemeSwitcher>
-      </ThemeContextProvider>
+            </ThemeContextProvider>
     </>
   );
 }

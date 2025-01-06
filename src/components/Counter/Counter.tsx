@@ -13,5 +13,5 @@ export const Counter =() =>{
         }
     }, [])
 
-    return <Text>{[count]}</Text>
+    return <Text>{count}</Text>
 }
