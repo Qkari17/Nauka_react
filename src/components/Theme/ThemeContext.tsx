@@ -21,24 +21,36 @@ export const useThemeContext = () => {
   throw new Error("Component should be placed inside ThemeContextProvider");
 };
 
+const saveThemeToLocalStorage = (theme: Theme) => {
+  localStorage.setItem("theme", theme);
+};
+
+const loadThemeFromLocalStorage = (): Theme | null => {
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === Theme.LIGHT || savedTheme === Theme.DARK) {
+    return savedTheme as Theme;
+  }
+  return null;
+};
+
 export const getMode = () => {
   if (window.matchMedia) {
     const matchesLightMode = window.matchMedia(
-      "(prefers-color-scheme: light"
+      "(prefers-color-scheme: light)"
     ).matches;
     return matchesLightMode ? Theme.LIGHT : Theme.DARK;
   }
   return null;
 };
-const addDarkClass = () =>document.body.classList.add("dark");
-const removeDarkClass = () =>document.body.classList.remove("dark");
+
+const addDarkClass = () => document.body.classList.add("dark");
+const removeDarkClass = () => document.body.classList.remove("dark");
 
 const useTheme = () => {
-  // const [theme, setTheme] = useState<Theme>(Theme.LIGHT);
-  const theme = useRef<Theme | null>(getMode());
+  const theme = useRef<Theme | null>(loadThemeFromLocalStorage() || getMode());
 
   useEffect(() => {
-    const themeMode = getMode();
+    const themeMode = theme.current;
     if (themeMode === Theme.DARK) {
       addDarkClass();
     } else {
@@ -46,34 +58,35 @@ const useTheme = () => {
     }
 
     const handleSchemeChange = (event: MediaQueryListEvent) => {
-      if (event.matches) {
+      const newTheme = event.matches ? Theme.DARK : Theme.LIGHT;
+      theme.current = newTheme;
+      saveThemeToLocalStorage(newTheme);
+      if (newTheme === Theme.DARK) {
         addDarkClass();
       } else {
         removeDarkClass();
       }
     };
 
-    let query: MediaQueryList;
-    if (themeMode !== null) {
-      query = window.matchMedia("(prefers-color-scheme: dark");
-      query.addEventListener("change", handleSchemeChange);
-    }
+    const query = window.matchMedia("(prefers-color-scheme: dark)");
+    query.addEventListener("change", handleSchemeChange);
 
     return () => {
-      query?.removeEventListener("change", handleSchemeChange);
+      query.removeEventListener("change", handleSchemeChange);
     };
   }, []);
+
   const toggle = () => {
     if (theme.current === Theme.DARK) {
       theme.current = Theme.LIGHT;
-      // setTheme(Theme.LIGHT);
       removeDarkClass();
     } else {
-      //   setTheme(Theme.DARK);
       theme.current = Theme.DARK;
       addDarkClass();
     }
+    saveThemeToLocalStorage(theme.current);
   };
+
   return { theme, toggle };
 };
 
