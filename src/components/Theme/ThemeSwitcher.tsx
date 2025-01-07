@@ -1,9 +1,25 @@
-import { MouseEventHandler, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import { getMode, Theme, useThemeContext } from "./ThemeContext";
 import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 
 export const ThemeSwitcher = () => {
   const [theme, setTheme] = useState<Theme| null>(getMode());
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") as Theme | null;
+    if (savedTheme) {
+           setTheme(savedTheme);
+      if (savedTheme === Theme.DARK) {
+        document.body.classList.add("dark");
+      } else {
+        document.body.classList.remove("dark");
+      }
+    } else {
+         const systemTheme = getMode();
+      setTheme(systemTheme);
+    }
+  }, []);
+
   const context = useThemeContext();
   const handleClick: MouseEventHandler = () => {
     context.toggle();
