@@ -13,9 +13,10 @@ export const AuthCredentials = () => {
   return (
     <div>
       <Text>Is user logged? {isLoggedIn ? "YES" : "NO"}</Text>
-      <Button label="Toggle" onClick={handleClick}></Button>
+      <div className="flex justify-center gap-2">      <Button label="Toggle" onClick={handleClick}></Button>
       <Button label="Log in" onClick={logIn}></Button>
-      <Button label="Log out" onClick={logOut}></Button>
+      <Button label="Log out" onClick={logOut}></Button></div>
+
     </div>
   );
 };

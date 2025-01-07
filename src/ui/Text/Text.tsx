@@ -1,6 +1,6 @@
 type Props = {
   // label: string;
-  children: React.ReactNode;
+  children: string | string[] | number;
 };
 
 export const Text = ({ children }: Props) => {

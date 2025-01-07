@@ -24,7 +24,7 @@ export const useThemeContext = () => {
 export const getMode = () => {
   if (window.matchMedia) {
     const matchesLightMode = window.matchMedia(
-      "(prefers-color-sheme: light"
+      "(prefers-color-scheme: light"
     ).matches;
     return matchesLightMode ? Theme.LIGHT : Theme.DARK;
   }

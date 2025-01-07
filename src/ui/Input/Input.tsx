@@ -15,13 +15,13 @@ export const Input = forwardRef(
         <label className="mr-2 dark:text-slate-300" htmlFor={id}>
           {label}
         </label>
-        <input
+        <input 
           id={id}
           ref={ref}
           {...rest}
           className={cn({
             " border-2 border-red-500 text-red-500 ring-red-300 placeholder:text-red-300 focus:ring-red-500 ":
-              error,
+              error, "border-2":!error,
           })}
         ></input>
         {error && <p className="text-red-500"> {error?.message}</p>}

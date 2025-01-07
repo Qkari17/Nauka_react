@@ -12,6 +12,7 @@ import {
   AuthContextProvider,
 } from "./components/Auth/AuthContext";
 import { AuthInfo } from "./components/Auth/AuthInfo";
+import { Stepper } from "./components/Stepper";
 import { ThemeContextProvider } from "./components/Theme/ThemeContext";
 import { ThemeSwitcher } from "./components/Theme/ThemeSwitcher";
 
@@ -29,6 +30,7 @@ function App() {
         <AuthContextProvider>
           <AuthInfo></AuthInfo>
         </AuthContextProvider>
+        <Stepper></Stepper>
             </ThemeContextProvider>
     </>
   );
