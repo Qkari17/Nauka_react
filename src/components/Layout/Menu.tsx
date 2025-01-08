@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { routes } from "../../routes";
+import { Basket } from "../../features/Products/Basket";
 
 type Props = {
   to: string;
@@ -38,6 +39,15 @@ export const Menu = () => {
           </li>
           <li>
             <DtNavLink to={routes.STEPPER.path}>Stepper</DtNavLink>
+          </li>
+          <li>
+            <DtNavLink to={routes.PRODUCT.path}>Product</DtNavLink>
+          </li>
+          <li>
+            <DtNavLink to={routes.BASKET.path}>Basket</DtNavLink>
+          </li>
+          <li>
+         <Basket ></Basket>
           </li>
         </ul>
       </nav>
