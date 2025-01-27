@@ -1,9 +1,9 @@
-
 import { ProductList } from "../features/Products/ProductList";
 import { type ProductDto } from "../types/Product";
 import { AirtableListResponse, fetchProducts } from "../services/products";
 import { useApi } from "../hooks/useApi";
-
+import { Link } from "react-router-dom";
+import { routes } from "../routes";
 
 // const products: Product[] = [
 //   {
@@ -26,10 +26,11 @@ export const ProductPage = () => {
   // const [data, setData] = useState<ProductDto []>([]);
   // const [isLoading, setIsLoading] = useState(true);
   // const [isError, setIsError] = useState(false);
-  const { data, isLoading , isError} = useApi<AirtableListResponse<ProductDto[]>>(fetchProducts);
+  const { data, isLoading, isError } =
+    useApi<AirtableListResponse<ProductDto[]>>(fetchProducts);
 
   // useEffect(() => {
-    
+
   //     fetchProducts().then((responseData) => {setData(responseData.records)
   //       setIsLoading(false);
   //     }).catch(()=> {
@@ -39,8 +40,13 @@ export const ProductPage = () => {
 
   return (
     <div>
-        {isLoading && <p className="text-white">Loading...</p>}
-        {isError && <p className="text-white">Oh no! Error!</p>}
+      {isLoading && <p className="text-white">Loading...</p>}
+      {isError && <p className="text-white">Oh no! Error!</p>}
+      <div>
+        <Link to={routes.CREATE_PRODUCT.path} className="text-cyan-400">
+          Create product
+        </Link>
+      </div>
       {data && <ProductList products={data.records} />}
     </div>
   );

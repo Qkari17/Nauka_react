@@ -44,6 +44,6 @@ useEffect ( () =>{
         }
     };
     loadData();
-}, [fether])
+}, [])
 return {data , isLoading, isError}
 }
