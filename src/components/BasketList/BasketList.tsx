@@ -15,7 +15,7 @@ export const BasketList = () => {
           {products.map((product) => (
             <li key={product.id}>
               <Text>
-                {product.name} ({product.price.toString()} zł)
+                {product.fields.name} ({product.fields.price.toString()} zł)
               </Text>
               <Button
                 label="Usuń produkt"

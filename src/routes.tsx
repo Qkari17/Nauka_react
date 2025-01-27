@@ -5,8 +5,10 @@ import { CounterPage } from "./pages/CounterPage";
 import { StepperPage } from "./pages/StepperPage";
 import { GeneratorPage } from "./pages/GeneratorPage";
 import { RegistrationFormRefsHookForm } from "./components";
-import { ProductList } from "./features/Products/ProductList";
+
 import { BasketList } from "./components/BasketList/BasketList";
+import { ProductPage } from "./pages/ProductPage";
+import { ProductDetailsPage } from "./pages/ProductDetailstPage";
 
 export const routes = {
   HOME: {
@@ -26,6 +28,9 @@ export const routes = {
   },
   PRODUCT: {
     path: "/product",
+  },
+  PRODUCT_Details: {
+    path: "/product/:id",
   },
   BASKET: {
     path: "/basket",
@@ -59,7 +64,11 @@ export const router = createBrowserRouter([
       },
       {
         path: routes.PRODUCT.path,
-        element: <ProductList></ProductList>,
+        element: <ProductPage></ProductPage>,
+      },
+      {
+        path: routes.PRODUCT_Details.path,
+        element: <ProductDetailsPage></ProductDetailsPage>,
       },
       {
         path: routes.BASKET.path,
