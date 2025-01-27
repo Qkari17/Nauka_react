@@ -8,7 +8,7 @@ import { RegistrationFormRefsHookForm } from "./components";
 
 import { BasketList } from "./components/BasketList/BasketList";
 import { ProductPage } from "./pages/ProductPage";
-import { ProductDetailsPage } from "./pages/ProductDetailstPage";
+import { ProductDetailsPage } from "./pages/ProductDetailsPage";
 
 export const routes = {
   HOME: {
@@ -29,8 +29,8 @@ export const routes = {
   PRODUCT: {
     path: "/product",
   },
-  PRODUCT_Details: {
-    path: "/product/:id",
+  PRODUCT_DETAILS: {
+    path: "/products/:id",
   },
   BASKET: {
     path: "/basket",
@@ -67,7 +67,7 @@ export const router = createBrowserRouter([
         element: <ProductPage></ProductPage>,
       },
       {
-        path: routes.PRODUCT_Details.path,
+        path: routes.PRODUCT_DETAILS.path,
         element: <ProductDetailsPage></ProductDetailsPage>,
       },
       {
