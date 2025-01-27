@@ -1,5 +1,5 @@
 import { ProductDto } from "../types/Product";
-type AirtableListResponse<T> = {
+export type AirtableListResponse<T> = {
     records : T;
 }
 
