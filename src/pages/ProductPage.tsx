@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ProductList } from "../features/Products/ProductList";
 import { type ProductDto } from "../types/Product";
+import { fetchProducts } from "../services/products";
 
 
 // const products: Product[] = [
@@ -21,26 +22,24 @@ import { type ProductDto } from "../types/Product";
 //   },
 
 export const ProductPage = () => {
-  const [products, setProducts] = useState<ProductDto[]>([]);
+  const [data, setData] = useState<ProductDto []>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    fetch("https://api.airtable.com/v0/apprgP8oINztLDp2n/products", {
-      headers: {
-        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error("Invalid response");
-      })
-      .then((data) => setProducts(data.records));
+    
+      fetchProducts().then((responseData) => {setData(responseData.records)
+        setIsLoading(false);
+      }).catch(()=> {
+        setIsError(true)
+      });
   }, []);
 
   return (
     <div>
-      <ProductList products={products} />
+        {isLoading && <p className="text-white">Loading...</p>}
+        {isError && <p className="text-white">Oh no! Error!</p>}
+      <ProductList products={data} />
     </div>
   );
 };

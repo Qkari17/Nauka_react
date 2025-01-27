@@ -3,33 +3,31 @@ import { useEffect, useState } from "react";
 import { type ProductDto } from "../types/Product";
 import { useParams } from "react-router-dom";
 import { ProductsDetails } from "../features/Products/ProductsDetails";
-
-
+import { fetchProduct } from "../services/products";
 
 export const ProductDetailsPage = () => {
-const {id} = useParams();
+  const { id } = useParams();
 
-  const [product, setProduct] = useState<ProductDto | null>(null);
-
+  const [data, setData] = useState<ProductDto | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   useEffect(() => {
-    const recordId = id?.startsWith(":") ? id.slice(1) : id;
-    fetch(`https://api.airtable.com/v0/apprgP8oINztLDp2n/products/${recordId}`, {
-      headers: {
-        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error("Invalid response");
-      })
-      .then((data) => setProduct(data));
+    if (id) {
+      const recordId = id?.startsWith(":") ? id.slice(1) : id;
+      fetchProduct(recordId).then((responseData) => {
+        setData(responseData);
+        setIsLoading(false);
+      }).catch(()=> {
+        setIsError(true)
+      });
+    }
   }, [id]);
 
   return (
     <div>
-    {product &&  <ProductsDetails product={product}/>}
+      {isLoading && <p className="text-white">Loading...</p>}
+      {isError && <p className="text-white">Oh no! Error!</p>}
+      {data && <ProductsDetails product={data} />}
     </div>
   );
 };
