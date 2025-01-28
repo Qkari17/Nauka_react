@@ -1,7 +1,7 @@
 import { ProductList } from "../features/Products/ProductList";
-import { type ProductDto } from "../types/Product";
-import { AirtableListResponse, fetchProducts } from "../services/products";
-import { useApi } from "../hooks/useApi";
+
+import {  fetchProducts } from "../services/products";
+
 import { Link } from "react-router-dom";
 import { routes } from "../routes";
 import { useQuery } from "@tanstack/react-query";

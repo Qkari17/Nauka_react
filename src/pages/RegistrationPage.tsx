@@ -1,5 +1,5 @@
-import { RegistrationFormRefs,} from "../components"
+import { RegistrationFormRefsHookForm,} from "../components"
 
 export const RegistrationPage= () => {
-    return <RegistrationFormRefs></RegistrationFormRefs>
+    return <RegistrationFormRefsHookForm/>
 };

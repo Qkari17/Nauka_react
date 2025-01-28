@@ -20,7 +20,7 @@ export const RegistrationFormRefsHookForm = () => {
 
   return (
     <form
-      className="flex flex-col gap-2"
+      className="flex flex-col gap-2 dark:text-white"
       onSubmit={handleSubmit(handleRegistrationForm)}
     >
       <Input
