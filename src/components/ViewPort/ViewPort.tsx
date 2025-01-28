@@ -6,7 +6,7 @@ export const ViewPort = () => {
     const size = useViewPort();
 return(
     <div>
-        <Text>X:{size.x} , Y:{size.y}</Text>
+        <Text>    X: {size.x}, Y: {size.y}</Text>
     </div>
 )
 

@@ -1,6 +1,6 @@
 type Props = {
   // label: string;
-  children: string | string[] | number ;
+  children: string | string[] | number | number[] ;
 };
 
 export const Text = ({ children }: Props) => {
