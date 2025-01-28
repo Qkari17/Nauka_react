@@ -22,7 +22,7 @@ export const useAuthContext = () => {
 
 AuthContext.displayName = "AuthContext";
 
-const useAuth = () => {
+export const useAuth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const toggleValue = () => setIsLoggedIn((value) => !value);
