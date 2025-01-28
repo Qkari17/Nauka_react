@@ -26,7 +26,7 @@ export const RegistrationFormRefsHookForm = () => {
       <Input
         label="E-mail"
         {...register("email")}
-        type="email"
+        // type="email"
         error={errors.email}
       ></Input>
       <Input

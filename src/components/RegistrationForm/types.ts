@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const validationSchema = z.object({
-  email: z.string().email({ message: "Invalid e=mail" }),
+  email: z.string().email({ message: "Invalid e-mail" }),
   password: z.string().min(3, "Password is required"),
   language: z
     .string()
