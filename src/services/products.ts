@@ -44,3 +44,4 @@ export const createProduct = (data: CreateProductDto): Promise<void> => {
     throw new Error("Invalid response");
   });
 };
+
